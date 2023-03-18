@@ -1,7 +1,7 @@
 -- file_manager.lua
 local function get_files_and_dirs(path)
   local files_and_dirs = {}
-  local p = io.popen('find "' .. path .. '" -maxdepth 1 -type d -o -type f')
+  local p = io.popen('find "' .. path .. '" -mindepth 1 -maxdepth 1 -type d -o -type f')
   for file in p:lines() do
     local relative_path = file:gsub(path .. "/", "")
     table.insert(files_and_dirs, relative_path)
