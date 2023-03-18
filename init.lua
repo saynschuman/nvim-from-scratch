@@ -16,6 +16,9 @@ vim.api.nvim_set_keymap('n', '<leader>r', ':source ~/.config/nvim/init.lua<CR>',
 -- Установка пустого символа в конце буфера
 vim.wo.fillchars='eob: '
 
+-- Устанавливаем fillchars для встроенного файлового менеджера
+vim.opt.fillchars:append { eob = ' ' }
+
 -- Включение использования системного буфера обмена
 vim.opt.clipboard:append('unnamedplus')
 
