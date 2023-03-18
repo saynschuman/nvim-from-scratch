@@ -4,18 +4,6 @@ vim.o.swapfile = false
 -- Включение отображения номеров строк
 vim.opt.number = true
 
--- Определяем функцию для отображения файлового менеджера
-function open_filemanager()
-  -- Если менеджер уже открыт, скрываем его
-  if vim.g.filemanager_open then
-    vim.cmd(':Lexplore')
-  else
-    -- Иначе открываем менеджер и устанавливаем флаг
-    vim.cmd(':Lexplore --immediate')
-    vim.g.filemanager_open = true
-  end
-end
-
 -- Отключение отображения относительных номеров строк
 vim.opt.relativenumber = false 
 
@@ -43,6 +31,9 @@ vim.cmd [[
   highlight StatusLineNC ctermfg=8 ctermbg=7 guifg=#ffffff guibg=#ffffff
 ]]
 
+-- Установка цвета номеров строк на серый
+vim.cmd('highlight LineNr ctermfg=darkgray')
+
 -- Отключение баннера в netrw
 vim.g.netrw_banner = 0
 
@@ -65,13 +56,8 @@ function toggle_filemanager()
   end
 end
 
--- Определение функции для установки комбинации клавиш
-function setup_keymap()
-  vim.api.nvim_set_keymap('n', '<leader>e', '<cmd>lua toggle_filemanager()<CR>', { noremap = true, silent = true })
-end
-
 -- Установка комбинации клавиш для открытия/закрытия файлового менеджера
-setup_keymap()
+vim.api.nvim_set_keymap('n', '<leader>e', '<cmd>lua toggle_filemanager()<CR>', { noremap = true, silent = true })
 
 -- Переназначение комбинации клавиш Shift+h на перемещение к предыдущей вкладке
 vim.api.nvim_set_keymap('n', '<S-h>', ':tabprevious<CR>', { noremap = true, silent = true })
