@@ -43,21 +43,8 @@ vim.g.netrw_list_style = 3
 -- Задание размера окна для netrw
 vim.g.netrw_winsize = 25
 
--- Определение функции для открытия/закрытия файлового менеджера
-function toggle_filemanager()
-  -- Если менеджер уже открыт, закрываем его и удаляем буфер
-  if vim.g.filemanager_open then
-    vim.cmd(':bd!')
-    vim.g.filemanager_open = false
-  else
-    -- Иначе открываем менеджер и устанавливаем флаг
-    vim.cmd(':Lexplore')
-    vim.g.filemanager_open = true
-  end
-end
-
 -- Установка комбинации клавиш для открытия/закрытия файлового менеджера
-vim.api.nvim_set_keymap('n', '<leader>e', '<cmd>lua toggle_filemanager()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>e', ':Lexplore<CR>', { noremap = true, silent = true })
 
 -- Переназначение комбинации клавиш Shift+h на перемещение к предыдущей вкладке
 vim.api.nvim_set_keymap('n', '<S-h>', ':tabprevious<CR>', { noremap = true, silent = true })
