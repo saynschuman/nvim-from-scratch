@@ -51,3 +51,6 @@ vim.api.nvim_set_keymap('n', '<S-l>', ':tabnext<CR>', { noremap = true, silent =
 
 -- Установка комбинации клавиш для закрытия текущего буфера
 vim.api.nvim_set_keymap('n', '<leader>c', ':bd<CR>', { noremap = true, silent = true })
+
+-- Изменение цвета разделяющей линии файлового менеджера
+vim.cmd('highlight VertSplit ctermfg=8 ctermbg=NONE guifg=#a9a9a9 guibg=NONE')
