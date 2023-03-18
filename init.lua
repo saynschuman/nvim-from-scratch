@@ -10,14 +10,8 @@ vim.opt.relativenumber = false
 -- Установка leader
 vim.g.mapleader = ' '
 
--- Определение команды для перезагрузки файла конфигурации
-vim.cmd('command! ReloadConfig source ~/.config/nvim/init.lua')
-
 -- Установка комбинации клавиш для перезагрузки файла конфигурации
-vim.api.nvim_set_keymap('n', '<leader>r', ':ReloadConfig<CR>', { noremap = true, silent = true })
-
--- Отключение отображения символа тильда в незанятых строках
-vim.opt.fillchars:remove('eob:~')
+vim.api.nvim_set_keymap('n', '<leader>r', ':source ~/.config/nvim/init.lua<CR>', { noremap = true, silent = true })
 
 -- Установка пустого символа в конце буфера
 vim.wo.fillchars='eob: '
