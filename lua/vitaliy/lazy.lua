@@ -22,7 +22,12 @@ require("lazy").setup({
     branch = "v2.x",
     dependencies = require("plugins.neo_tree_nvim_deps"),
     config = require("plugins.neo_tree_nvim")
-  }
+  },
+{
+  'kdheepak/tabline.nvim',
+  config = require("plugins/tabline_nvim"),
+  requires = { { 'hoob3rt/lualine.nvim', opt=true }, {'kyazdani42/nvim-web-devicons', opt = true} }
+}
 
 })
 

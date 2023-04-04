@@ -1,6 +1,6 @@
 return {
   options = {
-    icons_enabled = false,
+    icons_enabled = true,
     theme = 'catppuccin',
     component_separators = '|',
     section_separators = ''

@@ -7,7 +7,7 @@ return {
     config = function()
       require'window-picker'.setup({
         autoselect_one = true,
-        include_current = false,
+        include_current = true,
         filter_rules = {
           bo = {
             filetype = {'neo-tree', "neo-tree-popup", "notify"},
