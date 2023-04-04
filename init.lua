@@ -470,7 +470,8 @@ require('lazy').setup({
       vim.cmd([[nnoremap \ :Neotree reveal<cr>]])
     end
   },
-  { 'sindrets/diffview.nvim', dependencies = 'nvim-lua/plenary.nvim' }
+  { 'sindrets/diffview.nvim',  dependencies = 'nvim-lua/plenary.nvim' },
+  { 'akinsho/bufferline.nvim', version = "v3.*",                      dependencies = 'nvim-tree/nvim-web-devicons' }
 
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
@@ -495,6 +496,8 @@ vim.keymap.set({ 'n', 'v' }, '<C-j>', '<Plug>RestNvim', { silent = true })
 vim.keymap.set({ 'n', 'v' }, '<leader>gh', ':DiffviewFileHistory<cr>', { silent = true })
 vim.keymap.set({ 'n', 'v' }, '<leader>go', ':DiffviewOpen<cr>', { silent = true })
 vim.keymap.set({ 'n', 'v' }, '<leader>gq', ':DiffviewClose<cr>', { silent = true })
+vim.keymap.set({ 'n', 'v' }, '<S-h>', ':bprev<cr>', { silent = true })
+vim.keymap.set({ 'n', 'v' }, '<S-l>', ':bnext<cr>', { silent = true })
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
@@ -812,5 +815,4 @@ cmp.setup {
   },
 }
 
--- The line beneath this is called `modeline`. See `:help modeline`
--- vim: ts=2 sts=2 sw=2 et
+require "bufferline".setup()
