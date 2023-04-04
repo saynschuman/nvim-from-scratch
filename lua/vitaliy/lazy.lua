@@ -13,19 +13,19 @@ require("lazy").setup({
 
   'tpope/vim-fugitive', {"catppuccin/nvim", name = "catppuccin"}, {
     'nvim-lualine/lualine.nvim',
-    opts = require("plugins.lualine_nvim")
+    opts = require("plugins.lualine")
   }, {
     "folke/which-key.nvim",
-    config = require("plugins.which_key_nvim")
+    config = require("plugins.which_key")
   }, {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v2.x",
-    dependencies = require("plugins.neo_tree_nvim_deps"),
-    config = require("plugins.neo_tree_nvim")
+    dependencies = require("plugins.neo_tree_deps"),
+    config = require("plugins.neo_tree")
   },
 {
   'kdheepak/tabline.nvim',
-  config = require("plugins/tabline_nvim"),
+  config = require("plugins/tabline"),
   requires = { { 'hoob3rt/lualine.nvim', opt=true }, {'kyazdani42/nvim-web-devicons', opt = true} }
 }
 
