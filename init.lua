@@ -315,7 +315,7 @@ require('lazy').setup({
               -- Status type
               untracked = "",
               ignored   = "",
-              unstaged  = "",
+              unstaged  = "✖",
               staged    = "",
               conflict  = "",
             }
@@ -469,11 +469,8 @@ require('lazy').setup({
 
       vim.cmd([[nnoremap \ :Neotree reveal<cr>]])
     end
-  }
-
-
-
-
+  },
+  { 'sindrets/diffview.nvim', dependencies = 'nvim-lua/plenary.nvim' }
 
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
@@ -495,6 +492,9 @@ require('lazy').setup({
 vim.keymap.set({ 'n', 'v' }, '<C-g>', ':Neotree float git_status<cr>', { silent = true })
 vim.keymap.set({ 'n', 'v' }, '<C-b>', ':G blame<cr>', { silent = true })
 vim.keymap.set({ 'n', 'v' }, '<C-j>', '<Plug>RestNvim', { silent = true })
+vim.keymap.set({ 'n', 'v' }, '<leader>gh', ':DiffviewFileHistory<cr>', { silent = true })
+vim.keymap.set({ 'n', 'v' }, '<leader>go', ':DiffviewOpen<cr>', { silent = true })
+vim.keymap.set({ 'n', 'v' }, '<leader>gq', ':DiffviewClose<cr>', { silent = true })
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
