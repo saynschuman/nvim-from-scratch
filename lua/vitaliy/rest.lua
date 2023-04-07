@@ -1,5 +1,22 @@
 local M = {}
 
+local function parse_http_file()
+  local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
+  local url, headers = nil, {}
+
+  for _, line in ipairs(lines) do
+    if not url then
+      local method, request_url = string.match(line, "^(%u+)%s+(.+)$")
+      if method and request_url then url = request_url end
+    else
+      local key, value = string.match(line, "^(.-):%s*(.+)$")
+      if key and value then headers[key] = value end
+    end
+  end
+
+  return url, headers
+end
+
 local function pretty_json(json_str)
   local indent_level = 0
   local formatted_json = ""
@@ -58,19 +75,20 @@ local function get_request(url, headers)
   local pretty_response = pretty_json(response)
 
   -- Открываем новый вертикальный split-окно и выводим ответ в нем
-  vim.api.nvim_command("vnew")
+  vim.api.nvim_command("rightbelow vnew")
   -- Задаем тип файла для подсветки синтаксиса
   vim.api.nvim_command("set filetype=json")
   vim.api.nvim_buf_set_lines(0, 0, -1, false,
                              vim.split(pretty_response, "\n", {}))
 end
 
-local url = "https://api-sandbox.liquidplc.com/api-framework/contenttypes/"
-local headers = {
-  ["Authorization"] = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgwOTI5MzEwLCJpYXQiOjE2ODA4ODYxMTAsImp0aSI6IjNjNDhhM2E3MGZiNDQxMWM5ZWUyMWMwOWI0MjFiYWJmIiwidXNlcl9pZCI6Nn0.ibirce0d4jmBE9plf1FR71hGi1tBIZIfq6L4Lgky81c",
-  ["Content-Type"] = "application/json"
-}
-
-M.exec = function() get_request(url, headers) end
+M.exec = function()
+  local url, headers = parse_http_file()
+  if url then
+    get_request(url, headers)
+  else
+    print("Error: Unable to parse the current file")
+  end
+end
 
 return M

@@ -1,0 +1,3 @@
+GET https://api-sandbox.liquidplc.com/api-framework/contenttypes/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgwOTI5MzEwLCJpYXQiOjE2ODA4ODYxMTAsImp0aSI6IjNjNDhhM2E3MGZiNDQxMWM5ZWUyMWMwOWI0MjFiYWJmIiwidXNlcl9pZCI6Nn0.ibirce0d4jmBE9plf1FR71hGi1tBIZIfq6L4Lgky81c
+Content-Type: application/json
