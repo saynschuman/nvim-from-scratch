@@ -1,6 +1,6 @@
 local M = {}
 
-function pretty_json(json_str)
+local function pretty_json(json_str)
   local indent_level = 0
   local formatted_json = ""
 
@@ -62,7 +62,7 @@ local function get_request(url, headers)
   -- Задаем тип файла для подсветки синтаксиса
   vim.api.nvim_command("set filetype=json")
   vim.api.nvim_buf_set_lines(0, 0, -1, false,
-                             vim.split(pretty_response, "\n", true))
+                             vim.split(pretty_response, "\n", {}))
 end
 
 local url = "https://api-sandbox.liquidplc.com/api-framework/contenttypes/"
